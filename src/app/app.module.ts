@@ -55,7 +55,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     NgxMaskModule.forRoot(),
     FormsModule,
     ReactiveFormsModule
