@@ -1,0 +1,214 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.output{
+  overflow-x: scroll;
+}
+
+.error{
+  color: var(--color-6);
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.container {
+  display: flex;
+  background: linear-gradient(45deg, var(--color-1), var(--color-2));
+}
+
+.cide-left,
+.cide-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+
+.cide-right {
+  background: var(--color-4);
+  overflow-y: scroll;
+}
+
+#text {
+  width: 40%;
+}
+
+#person {
+  height: 70%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+.header h1 {
+  font-family: "Avenir Bold", sans-serif;
+  text-transform: uppercase;
+}
+
+.form {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.form-content {
+  width: 400%;
+  display: flex;
+}
+
+.form-content input[type="radio"] {
+  display: none;
+}
+
+.step {
+  width: 25%;
+}
+
+.box {
+  width: 100%;
+}
+
+.box:first-child {
+  margin-top: 10px;
+}
+
+.box:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.input-box input {
+  padding: 7px 14px;
+  transition: 0.2s;
+  border-radius: 5px;
+  border: 1px var(--color-9) solid;
+  outline: none;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  transform: translateY(-125%);
+  opacity: 1;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  transition: 0.2s;
+  background: var(--color-4);
+  border-radius: 20px;
+}
+
+.current {
+  transition: 0.3s;
+}
+
+#radio-1:checked ~ .current {
+  margin-left: 0%;
+}
+
+#radio-2:checked ~ .current {
+  margin-left: -25%;
+}
+
+#radio-3:checked ~ .current {
+  margin-left: -50%;
+}
+
+#radio-4:checked ~ .current {
+  margin-left: -75%;
+}
+
+.sign-control {
+  margin: 10px 0px;
+}
+
+.sign-control a {
+  color: gray;
+  text-decoration: none;
+}
+
+.sign-control .action {
+  color: #287ae6;
+}
+
+.sign-control-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-control-button button {
+  width: 100%;
+  background: var(--color-1);
+  padding: 9px 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  border: 0;
+  color: var(--color-4);
+  font-family: "Avenir Bold";
+}
+
+.sign-control-button button:disabled{
+  opacity: 0.7;
+}
+
+.sign-control-button button:not(:last-child) {
+  margin-bottom: 7px;
+}
+
+#b-v {
+  background: var(--color-6);
+}
+
+@media screen and (max-width: 507px) {
+  .cide-left {
+    display: none;
+  }
+
+  .cide-right {
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    box-shadow: 2px 7px 40px rgba(0, 0, 0, 0.2);
+    margin: auto;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .cide-right{
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}

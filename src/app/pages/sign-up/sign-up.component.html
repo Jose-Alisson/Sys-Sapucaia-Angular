@@ -1,0 +1,149 @@
+<div class="content">
+  <div class="header">
+    <div class="logo">
+      <img src="assets//iconePizzaria.png" alt="" />
+    </div>
+    <h1>Inscrever-se</h1>
+  </div>
+  <form class="form">
+    <div class="form-content">
+      <input type="radio" name="step-r" id="radio-1" />
+      <input type="radio" name="step-r" id="radio-2" />
+      <input type="radio" name="step-r" id="radio-3" />
+      <input type="radio" name="step-r" id="radio-4" />
+      <div class="step current" [formGroup]="userForm">
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="user" formControlName="user" required [(ngModel)]="autho.user"/>
+            <label for="user">Usuario*</label>
+          </div>
+          <div class="output" *ngIf="exibir">
+            <p class="error" *ngIf="userForm.get('user')?.errors?.['required']">
+              O usuario não pode ser vazio
+            </p>
+            <p class="error" *ngIf="userForm.get('user')?.errors?.['minlength']?.['requiredLength']" >
+              O usuario não pode ser menor que 6 caracteres
+            </p>
+            <p class="error"></p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="input-box">
+            <input type="password" id="senha" formControlName="password" required [(ngModel)]="autho.password"/>
+            <label for="senha">Senha*</label>
+          </div>
+          <div class="output" *ngIf="exibir">
+            <p class="error" *ngIf="userForm.get('password')?.errors?.['required']">
+              A senha não pode ser vazio
+            </p>
+            <p class="error"  *ngIf="userForm.get('password')?.errors?.['minlength']?.['requiredLength']" >
+              A senha não pode ser menor que 6 caracteres
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="input-box">
+            <input type="password" id="cSenha"  formControlName="cPassword" required [(ngModel)]="confirm.password"/>
+            <label for="cSenha">Confirmar Senha*</label>
+          </div>
+          <div class="output" *ngIf="exibir">
+            <p class="error" *ngIf="confirm.password != autho.password">
+              A confirmação não pode ser diferente da sua senha
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="step" [formGroup]="apelidoForm">
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="nome" formControlName="nome" required [(ngModel)]="user.name"/>
+            <label for="nome">Seu Nome*</label>
+          </div>
+          <div class="output" *ngIf="exibir">
+            <p class="error" *ngIf="apelidoForm.get('nome')?.errors?.['required']">
+              O seu nome nao pode ser vazio
+            </p>
+            <p class="error" *ngIf="apelidoForm.get('nome')?.errors?.['minlength']?.['requiredLength']">
+              O seu nome nao pode menor que 4 caracteres
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="nome" formControlName="apelido" required [(ngModel)]="user.apelido"/>
+            <label for="apelido">Seu Apelido*</label>
+          </div>
+          <div class="output" *ngIf="exibir">
+            <p class="error" *ngIf="apelidoForm.get('apelido')?.errors?.['required']">
+              O seu Apelido nao pode ser vazio
+            </p>
+            <p class="error" *ngIf="apelidoForm.get('apelido')?.errors?.['minlength']?.['requiredLength']">
+              O seu nome nao pode menor que 2 caracteres
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="step" [formGroup]="contactForm">
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="whatsapp" formControlName="whatsapp" required prefix="(81)" mask="9999-9999" [(ngModel)]="user.contact">
+            <label for="whatsapp">Número Whatsapp*</label>
+          </div>
+          <div class="output" *ngIf="exibir">
+            <p class="error" *ngIf="contactForm.get('whatsapp')?.errors?.['required']">
+              O seu número de Whatsapp não pode ser vazio
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="nome" formControlName="code" required />
+            <label for="nome">Código de Verificação*</label>
+          </div>
+          <p class="output">
+
+          </p>
+        </div>
+      </div>
+      <div class="step" [formGroup]="addressForm">
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="naAddress" required />
+            <label for="naAddress">Nome do Endereço</label>
+          </div>
+          <p class="output"></p>
+        </div>
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="cep" formControlName="cep" required mask="99999-999" />
+            <label for="cep">CEP</label>
+          </div>
+          <p class="output"></p>
+        </div>
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="noth" required />
+            <label for="noth">Número da Residencia</label>
+          </div>
+          <p class="output"></p>
+        </div>
+        <div class="box">
+          <div class="input-box">
+            <input type="text" id="locality" required />
+            <label for="locality">Localidade</label>
+          </div>
+          <p class="output"></p>
+        </div>
+      </div>
+    </div>
+    <div class="sign-control">
+      <a [routerLink]="['../sign-In']">
+        Já tenho uma conta. <span class="action">Entrar</span>
+      </a>
+    </div>
+    <div class="sign-control-button">
+      <button (click)="prosseguir()">{{ textButton[count] }}</button>
+      <button (click)="voltar()" *ngIf="count > 1" id="b-v">Voltar</button>
+    </div>
+  </form>
+</div>
