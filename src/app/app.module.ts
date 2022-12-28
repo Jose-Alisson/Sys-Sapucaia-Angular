@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CideBarComponent } from './shared/components/cide-bar/cide-bar.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -46,7 +48,9 @@ const appRoutes: Routes = [
     CartComponent,
     AboutComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    CideBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
