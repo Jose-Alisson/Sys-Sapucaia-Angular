@@ -18,12 +18,12 @@
             <label for="user">Usuario*</label>
           </div>
           <div class="output">
-            <div class="error" *ngIf="userForm.get('user')?.invalid; else name">
+            <div class="error" *ngIf="userForm.get('user')?.invalid">
               <div *ngIf="userForm.get('user')?.errors?.['required']">
-                O campo não pode ser vazio
+                <p>O campo não pode ser vazio</p>
               </div>
               <ng-template [ngIf]="userForm.get('user')?.errors?.['minlength']?.['requiredLength']">
-                Campo muito curto
+                <p>Campo muito curto</p>
               </ng-template>
             </div>
             <ng-template #name>

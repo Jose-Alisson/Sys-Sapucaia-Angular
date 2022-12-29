@@ -2,7 +2,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-
 .output .error {
   background: var(--color-6);
   position: relative;
@@ -14,6 +13,35 @@
 
 .output .error div{
   height: 25px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.output .error div p{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  font-family: 'Avenir Bold';
+  text-transform: uppercase;
+  font-size: 12.5px;
+  width: 100%;
+  animation: animacao 5s linear infinite;
+}
+
+
+@keyframes animacao {
+  0%{
+    transform: translate(50%,-50%);
+  }
+
+  100%{
+    transform: translate(-100%,-50%);
+  }
 }
 
 .output .error::after{
