@@ -10,21 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['../../shared/styles/account.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  output:any = {};
 
-  autho:AuthorizationModel = {
+  autho: AuthorizationModel = {
     id: 0,
     user: '',
     password: '',
-    typeAuthorization: 'client'
-  }
+    typeAuthorization: 'client',
+  };
 
-  address:AddressModel = {
+  address: AddressModel = {
     id: 0,
     nameAddress: '',
     cep: '',
     noth: '',
-    locality: ''
-  }
+    locality: '',
+  };
 
   user: UserModel = {
     id: 0,
@@ -32,13 +33,13 @@ export class SignUpComponent implements OnInit {
     authorization: this.autho,
     contact: '',
     addresses: [this.address],
-    apelido: ''
+    apelido: '',
   };
 
   confirm = {
-    password: "",
-    codigo: ""
-  }
+    password: '',
+    codigo: '',
+  };
 
   exibir = false;
 
@@ -80,39 +81,29 @@ export class SignUpComponent implements OnInit {
   }
 
   prosseguir() {
-    console.log(this.userForm);
+    console.log(this.output);
     if (this.count < 4) {
       switch (this.count) {
         case 1:
+          this.userOutputValidate()
           if (this.userForm.valid) {
             this.updateStep(1);
-            this.exibir = false;
-          } else {
-            this.exibir = true;
           }
           break;
         case 2:
+          this.apelidoOutputValidate()
           if (this.apelidoForm.valid) {
             this.updateStep(1);
-            this.exibir = false;
-          } else {
-            this.exibir = true;
           }
           break;
         case 3:
           if (this.contactForm.valid) {
             this.updateStep(1);
-            this.exibir = false;
-          } else {
-            this.exibir = true;
           }
           break;
         case 4:
           if (this.addressForm.valid) {
             this.updateStep(1);
-            this.exibir = false;
-          } else {
-            this.exibir = true;
           }
           break;
         default:
@@ -125,5 +116,70 @@ export class SignUpComponent implements OnInit {
     this.count += valor;
     (<HTMLInputElement>document.getElementById('radio-' + this.count)).checked =
       true;
+  }
+
+  userOutputValidate() {
+    let output = {
+      user: '',
+      password: '',
+      cPassword: '',
+    };
+
+    //this.userForm.get('user')?.invalid
+
+    if (this.userForm.get('user')?.errors?.['required']) {
+      output.user = 'O usuario não pode ser vazio';
+    } else if (this.userForm.get('user')?.errors?.['minlength']?.['actualLength'] < 6 ) {
+      output.user = 'Usuario muito curto';
+    } else {
+      output.user = '';
+    }
+
+
+
+    if(this.userForm.get('password')?.errors?.['required']){
+      output.password = 'A senha não pode ser vazia';
+    } else if (this.userForm.get('password')?.errors?.['minlength']?.['actualLength'] < 6 ) {
+      output.password = 'Senha muito curto';
+    } else {
+      output.password = '';
+    }
+
+
+
+    if (this.userForm.get('cPassword')?.errors?.['required']) {
+      output.cPassword = 'A cormfirmação não pode ser vazio';
+    } else if (this.confirm.password !== this.autho.password){
+      output.cPassword = 'Confirmação diferente da sua senha';
+    } else {
+      output.cPassword = '';
+    }
+    this.output = output;
+    console.log(this.output)
+  }
+
+  apelidoOutputValidate() {
+    let output = {
+      name: '',
+      apelido: '',
+    };
+
+    if (this.apelidoForm.get('nome')?.errors?.['required']) {
+      output.name = 'O nome não pode ser vazio';
+    } else if (this.userForm.get('nome')?.errors?.['minlength']?.['actualLength'] < 4){
+      output.name = 'O nome muito curto';
+    } else {
+      output.name = '';
+    }
+
+    if (this.apelidoForm.get('apelido')?.errors?.['required']) {
+      output.apelido = 'O apelido não pode ser vazio';
+    } else if (this.userForm.get('apelido')?.errors?.['minlength']?.['actualLength'] < 2){
+      output.apelido = 'O apelido muito curto';
+    } else {
+      output.apelido = '';
+    }
+
+    this.output = output;
   }
 }

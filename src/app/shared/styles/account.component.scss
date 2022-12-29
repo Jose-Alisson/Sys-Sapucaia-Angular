@@ -2,13 +2,31 @@
   font-family: "Poppins", sans-serif;
 }
 
-.output{
+
+.output .error {
+  background: var(--color-6);
+  position: relative;
+  z-index: 2;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 2px;
 }
 
-.error{
-  color: var(--color-6);
-  margin-left: 10px;
-  font-size: 14px;
+.output .error div{
+  height: 25px;
+}
+
+.output .error::after{
+  content: '';
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  padding: 1px;
+  rotate: 45deg;
+  background: var(--color-6);
+  position: absolute;
+  top: -5px;
+  right: 10px;
 }
 
 .container {
