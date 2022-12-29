@@ -17,18 +17,15 @@
             <input type="text" id="user" formControlName="user" required [(ngModel)]="autho.user"/>
             <label for="user">Usuario*</label>
           </div>
-          <div class="output">
+          <div class="output" *ngIf="exibir">
             <div class="error" *ngIf="userForm.get('user')?.invalid">
               <div *ngIf="userForm.get('user')?.errors?.['required']">
-                <p>O campo não pode ser vazio</p>
+                <p>O campo não pode ser vazio!</p>
               </div>
-              <ng-template [ngIf]="userForm.get('user')?.errors?.['minlength']?.['requiredLength']">
-                <p>Campo muito curto</p>
-              </ng-template>
+              <div *ngIf="userForm.get('user')?.errors?.['minlength']?.['requiredLength']">
+                <p>Campo muito curto!</p>
+              </div>
             </div>
-            <ng-template #name>
-              <div class="valid">Valido</div>
-            </ng-template>
           </div>
         </div>
         <div class="box">
@@ -36,8 +33,15 @@
             <input type="password" id="senha" formControlName="password" required [(ngModel)]="autho.password"/>
             <label for="senha">Senha*</label>
           </div>
-          <div class="output">
-
+          <div class="output" *ngIf="exibir">
+            <div class="error" *ngIf="userForm.get('password')?.invalid">
+              <div *ngIf="userForm.get('password')?.errors?.['required']">
+                <p>O campo não pode ser vazio!</p>
+              </div>
+              <div *ngIf="userForm.get('password')?.errors?.['minlength']?.['requiredLength']">
+                <p>Campo muito curto!</p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="box">
@@ -45,7 +49,15 @@
             <input type="password" id="cSenha"  formControlName="cPassword" required [(ngModel)]="confirm.password"/>
             <label for="cSenha">Confirmar Senha*</label>
           </div>
-          <div class="output">
+          <div class="output" *ngIf="exibir">
+            <div class="error" *ngIf="userForm.get('cPassword')?.invalid || !passwordEqual()">
+              <div *ngIf="userForm.get('cPassword')?.errors?.['required'] && passwordEqual()">
+                <p>O campo não pode ser vazio!</p>
+              </div>
+              <div *ngIf="!passwordEqual()">
+                <p>Senha diferente!</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

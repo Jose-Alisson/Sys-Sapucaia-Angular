@@ -81,13 +81,14 @@ export class SignUpComponent implements OnInit {
   }
 
   prosseguir() {
-    console.log(this.output);
     if (this.count < 4) {
       switch (this.count) {
         case 1:
-          this.userOutputValidate()
-          if (this.userForm.valid) {
+          this.exibir = false
+          if (this.userForm.valid && this.passwordEqual()) {
             this.updateStep(1);
+          } else {
+            this.exibir = true
           }
           break;
         case 2:
@@ -118,45 +119,6 @@ export class SignUpComponent implements OnInit {
       true;
   }
 
-  userOutputValidate() {
-    let output = {
-      user: '',
-      password: '',
-      cPassword: '',
-    };
-
-    //this.userForm.get('user')?.invalid
-
-    if (this.userForm.get('user')?.errors?.['required']) {
-      output.user = 'O usuario não pode ser vazio';
-    } else if (this.userForm.get('user')?.errors?.['minlength']?.['actualLength'] < 6 ) {
-      output.user = 'Usuario muito curto';
-    } else {
-      output.user = '';
-    }
-
-
-
-    if(this.userForm.get('password')?.errors?.['required']){
-      output.password = 'A senha não pode ser vazia';
-    } else if (this.userForm.get('password')?.errors?.['minlength']?.['actualLength'] < 6 ) {
-      output.password = 'Senha muito curto';
-    } else {
-      output.password = '';
-    }
-
-
-
-    if (this.userForm.get('cPassword')?.errors?.['required']) {
-      output.cPassword = 'A cormfirmação não pode ser vazio';
-    } else if (this.confirm.password !== this.autho.password){
-      output.cPassword = 'Confirmação diferente da sua senha';
-    } else {
-      output.cPassword = '';
-    }
-    this.output = output;
-    console.log(this.output)
-  }
 
   apelidoOutputValidate() {
     let output = {
@@ -181,5 +143,9 @@ export class SignUpComponent implements OnInit {
     }
 
     this.output = output;
+  }
+
+  passwordEqual(){
+    return (this.confirm.password === this.autho.password)
   }
 }
