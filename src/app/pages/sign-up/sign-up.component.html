@@ -23,7 +23,7 @@
                 <p>O campo não pode ser vazio!</p>
               </div>
               <div *ngIf="userForm.get('user')?.errors?.['minlength']?.['requiredLength']">
-                <p>Campo muito curto!</p>
+                <p>Usuario muito curto!</p>
               </div>
             </div>
           </div>
@@ -36,10 +36,10 @@
           <div class="output" *ngIf="exibir">
             <div class="error" *ngIf="userForm.get('password')?.invalid">
               <div *ngIf="userForm.get('password')?.errors?.['required']">
-                <p>O campo não pode ser vazio!</p>
+                <p>A senha não pode ser vazia!</p>
               </div>
               <div *ngIf="userForm.get('password')?.errors?.['minlength']?.['requiredLength']">
-                <p>Campo muito curto!</p>
+                <p>Senha muito curta!</p>
               </div>
             </div>
           </div>
@@ -67,7 +67,15 @@
             <input type="text" id="nome" formControlName="nome" required [(ngModel)]="user.name"/>
             <label for="nome">Seu Nome*</label>
           </div>
-          <div class="output">
+          <div class="output" *ngIf="exibir">
+            <div class="error" *ngIf="apelidoForm.get('nome')?.invalid">
+              <div *ngIf="apelidoForm.get('nome')?.errors?.['required']">
+                <p>O campo não pode ser vazio!</p>
+              </div>
+              <div *ngIf="apelidoForm.get('nome')?.errors?.['minlength']?.['requiredLength']">
+                <p>Nome muito curto!</p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="box">
@@ -75,8 +83,15 @@
             <input type="text" id="nome" formControlName="apelido" required [(ngModel)]="user.apelido"/>
             <label for="apelido">Seu Apelido*</label>
           </div>
-          <div class="output">
-
+          <div class="output" *ngIf="exibir">
+            <div class="error" *ngIf="apelidoForm.get('apelido')?.invalid">
+              <div *ngIf="apelidoForm.get('apelido')?.errors?.['required']">
+                <p>O campo não pode ser vazio!</p>
+              </div>
+              <div *ngIf="apelidoForm.get('apelido')?.errors?.['minlength']?.['requiredLength']">
+                <p>Apelido muito curto!</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

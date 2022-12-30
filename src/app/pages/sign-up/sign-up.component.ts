@@ -92,9 +92,11 @@ export class SignUpComponent implements OnInit {
           }
           break;
         case 2:
-          this.apelidoOutputValidate()
+          this.exibir = false
           if (this.apelidoForm.valid) {
             this.updateStep(1);
+          } else {
+            this.exibir = true
           }
           break;
         case 3:
