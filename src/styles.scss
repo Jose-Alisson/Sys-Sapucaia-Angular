@@ -30,7 +30,33 @@ html, body, .container {
   height: 100%;
 }
 
-app-sign-in, app-sign-up{
+.account{
+  display: flex;
+}
+
+.cide-left, .cide-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 100%;
+}
+
+.cide-left{
+  background: url('assets//background.png') center;
+}
+
+#pizza-text{
+  width: 40%;
+}
+
+#pizza-maker{
+  width: 70%;
+}
+
+
+app-sign-in{
   width: 90%;
   height: 90%;
 }
