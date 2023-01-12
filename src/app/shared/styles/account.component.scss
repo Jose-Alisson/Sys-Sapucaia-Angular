@@ -110,16 +110,25 @@ button {
 }
 
 @media screen and (max-width: 600px) {
-  .cide-left{
+  .cide-left {
     display: none;
   }
 
-  .cide-right{
+  .cide-right {
     width: 100vw;
   }
 
-  #pizza-maker{
+  #pizza-maker {
     width: auto;
     height: 35vh;
+  }
+}
+
+.invalid {
+  background-color: tomato;
+  border-color: tomato;
+
+  i {
+    color: var(--color-1);
   }
 }

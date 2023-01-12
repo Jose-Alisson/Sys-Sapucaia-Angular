@@ -11,7 +11,7 @@
         <label>Usuario*</label>
         <div class="unique-box">
           <i class="fa-solid fa-user"></i>
-          <input type="text" name="user" id="user" placeholder="Usuario"/>
+          <input type="text" name="user" id="user" placeholder="Usuario" [(ngModel)]="autho.user"/>
         </div>
       </div>
       <p></p>
@@ -21,7 +21,7 @@
         <label>Senha*</label>
         <div class="unique-box">
           <i class="fa-solid fa-lock"></i>
-          <input type="password" name="" id="" placeholder="Senha"/>
+          <input type="password" name="" id="password" placeholder="Senha" [(ngModel)]="autho.password"/>
         </div>
       </div>
       <p></p>
@@ -29,6 +29,6 @@
     <div class="card-controller">
       <a href="#">Não tenho conta, <span>Criar</span></a>
     </div>
-    <button>Entrar</button>
+    <button (click)="login()">Entrar</button>
   </div>
 </div>
