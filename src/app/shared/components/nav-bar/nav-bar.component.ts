@@ -1,15 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { appRoutes } from 'src/app/app.module';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['../../styles/sharedComp.component.scss'],
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  routes: routerPath[] = [];
 
-  ngOnInit(): void {
+  constructor() {
+    appRoutes.forEach((p) => {
+      if (p.path === 'dashboard') {
+        p.children?.forEach((s) => {
+          if (s.path !== '') {
+            let path = '' + p.path;
+            path = '' + s.path;
+            this.routes.push({ path: path, pathName: '' + s.path });
+          }
+        });
+      }
+    });
   }
 
+  ngOnInit(): void {}
+}
+export class routerPath {
+  path = '';
+  pathName = '';
 }

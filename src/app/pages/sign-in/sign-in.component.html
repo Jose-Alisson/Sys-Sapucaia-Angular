@@ -14,7 +14,7 @@
           <input type="text" name="user" id="user" placeholder="Usuario" [(ngModel)]="autho.user"/>
         </div>
       </div>
-      <p></p>
+      <p class="msg-invalid">{{output?.['messege.user']}}</p>
     </div>
     <div class="box">
       <div class="input-box">
@@ -24,7 +24,7 @@
           <input type="password" name="" id="password" placeholder="Senha" [(ngModel)]="autho.password"/>
         </div>
       </div>
-      <p></p>
+      <p class="msg-invalid">{{output?.['message.password']}}</p>
     </div>
     <div class="card-controller">
       <a href="#">Não tenho conta, <span>Criar</span></a>

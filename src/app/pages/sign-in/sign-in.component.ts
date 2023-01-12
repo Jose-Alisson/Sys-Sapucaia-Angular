@@ -15,7 +15,7 @@ export class SignInComponent implements OnInit {
     password: '',
   };
 
-  output:any;
+  output:any = {};
 
   constructor(
     private sign: SignInService,
@@ -33,13 +33,17 @@ export class SignInComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.output = error.error;
-        let ub = document.querySelectorAll(".unique-box")
-        ub.forEach(data => {
-          if(data.querySelector("#"+this.output) !== null){
-            data.classList.toggle('invalid')
+        document.querySelectorAll('.unique-box').forEach(d => {
+          if(d.querySelector('#' + this.output?.['input']) !== null){
+            if(!d.classList.contains('invalid')){
+              d.classList.add('invalid')
+            }
+          } else {
+            if(d.classList.contains('invalid')){
+              d.classList.remove('invalid')
+            }
           }
         })
-        console.log(this.output)
       }
     );
   }

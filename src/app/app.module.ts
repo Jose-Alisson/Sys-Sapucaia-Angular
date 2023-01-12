@@ -16,17 +16,17 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProductComponent } from './pages/product/product.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'cart', component: CartComponent },
-      { path: 'about', component: AboutComponent },
-      { path: 'product', component: ProductComponent },
+      { path: '', redirectTo: 'casa', pathMatch: 'full' },
+      { path: 'casa', component: HomeComponent },
+      { path: 'carrinho', component: CartComponent },
+      { path: 'sobre', component: AboutComponent },
+      { path: 'produtos', component: ProductComponent },
     ],
   },
   {
