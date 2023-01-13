@@ -12,7 +12,7 @@ import { filter } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   routes: routerPath[] = [];
-  title:string = ''
+  public title:string = ''
 
   constructor(private accountService: AccountService, private router:Router) {
     /*if(accountService.getUser() === null || accountService.getUser() === undefined){
