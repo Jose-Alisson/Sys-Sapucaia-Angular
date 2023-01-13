@@ -44,6 +44,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  actived(){
+    document.querySelector('.menu-burguer')?.classList.toggle('actived')
+  }
+
 }
 
 export class routerPath {

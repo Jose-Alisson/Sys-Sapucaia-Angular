@@ -27,26 +27,39 @@ nav{
   align-items: center;
 }
 
-.menu-items{
-  position: absolute;
-  right: -200px;
-}
-
 .menu-burguer{
-  width: 50px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 5px;
   background: var(--color-1);
-  box-shadow: 0px 0px 30px rgba(0, 0,0, 0.2);
+  box-shadow: 2px 2px 40px rgba(0, 0,0, 0.2);
 }
 
-.menu-burguer div {
-  height: 2px;
-  width: 80%;
-  margin: auto;
-  background: var(--color-4);
+.menu-burguer.actived ~ .menu-items{
+  transform: translateX(-100vw);
+}
+
+.menu-items{
+  position: absolute;
+  left: 100vw;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  background: var(--color-1);
+  top: 70px;
+  display:  flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.menu-items ul {
+  height: 80%;
+  list-style: none;
+}
+
+.menu-items ul li, .menu-items ul li a{
+  color: var(--color-4);
+  text-decoration: none;
+  text-transform: uppercase;
 }
