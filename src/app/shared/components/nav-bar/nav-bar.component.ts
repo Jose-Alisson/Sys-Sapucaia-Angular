@@ -25,6 +25,10 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  menuActived(){
+    document.querySelector('.menu-burguer')?.classList.toggle('actived')
+  }
 }
 export class routerPath {
   path = '';
