@@ -1,0 +1,27 @@
+<div class="container navbar">
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets//iconePizzaria.png" alt="" />
+      </div>
+      <h1 class="title">{{title}}</h1>
+
+      <div class="menu-burguer actived" (click)="actived()">
+        <div class="line-1"></div>
+        <div class="line-2"></div>
+        <div class="line-3"></div>
+      </div>
+      <div class="menu-items">
+        <ul>
+          <li *ngFor="let i of routes">
+            <a [routerLink]="[i.path]">{{ i.pathName }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="content">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
+</div>
